@@ -1,18 +1,9 @@
 #include "declarations.h"
 
-stack<BoardState> boards;
-int dirx[4] = { 1, 0, -1, 0 };
-int diry[4] = { 0, 1, 0, -1 };
-int record = 1;
-
-void search_subtree()
+void dfs()
 {
-	stack<BoardState> sub_boards;
-	BoardState board, initial_board;
-	initial_board = boards.top();
-	boards.pop();
-	sub_boards.push(initial_board);
-	int inital_lick_num = initial_board.licks;
+	BoardState board;
+
 	while (!boards.empty())
 	{
 		board = boards.top();
@@ -67,14 +58,5 @@ void search_subtree()
 		}
 		boards.push(board);
 	}
-}
-
-int main()
-{
-	
-	BoardState inital_board;
-	inital_board.b[0][0] = 1;
-	boards.push(inital_board);
-	dfs();
-	return 0;
+	cout << "END!!!" << endl;
 }
